@@ -4,6 +4,7 @@ This script implements the pascal_triangle function
 ---> pascal_triangle(n)
 """
 
+
 def pascal_triangle(n):
     """
     Generate Pascal's triangle up to the given number of rows.
