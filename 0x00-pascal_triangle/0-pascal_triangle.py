@@ -18,6 +18,19 @@ def pascal_triangle(n):
     Example:
         >>> pascal_triangle(5)
         [[1], [1, 1], [1, 2, 1], [1, 3, 3, 1], [1, 4, 6, 4, 1]]
+
+    Explanation:
+        The algorithm generates Pascal's triangle by iterating over each row (k) up to the given number of rows (n).
+        For each row, a new list called `triangle` is created.
+        Within each row, the algorithm iterates over each element (i) up to the current row number (k+1).
+        If the element is the first element (i == 0), it appends 1 to the `triangle` list.
+        Otherwise, it calculates the value of the current element by summing the previous row's element at index (i-1)
+        (stored in `nbr1`) and the previous row's element at index (i) (stored in `nbr2`).
+        If the previous row does not exist or the indices are out of range, the value is considered as 0.
+        The calculated value is then appended to the `triangle` list.
+        Finally, the `triangle` list is appended to the `triangles` list, which represents the entire Pascal's triangle.
+        The `triangles` list is returned as the result.
+
     """
 
     if n <= 0:
