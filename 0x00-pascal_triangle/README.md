@@ -33,5 +33,5 @@ This will output the following Pascal's Triangle:
 
 ## Contributing
 
-Contributions are welcome! If you have any suggestions or improvements, feel free to open an issue or submit a pull request.
+Contributions are welcome! If you have any suggestions, a different implementation or improvements, feel free to open an issue or submit a pull request.
 
