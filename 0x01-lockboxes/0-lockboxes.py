@@ -12,27 +12,30 @@ Functions:
 
 def canUnlockAll(boxes):
     """
-    Determines if all boxes can be unlocked.
-
-    Starting with the first box (index 0), this function iterates through each
-    box. If the current box can be unlocked (its index is in the list of keys
-    we have), it iterates through the keys in the box. Each new key found is
-    added to our list of keys, allowing us to unlock more boxes.
+    Determines if all boxes can be opened given a list of lists, where each
+    inner list contains keys to other boxes.
 
     Parameters:
-        boxes (list of list of int): A list where each element is a list of
-                                     integers representing the keys in a box.
+    boxes (list of list of int): A list where each element is a list of
+                                 integers representing the keys in a box.
 
     Returns:
-        bool: True if all boxes can be unlocked, False otherwise.
+    bool: True if all boxes can be opened, else False.
     """
-    keys = [0]
-    for boxIndex in range(len(boxes)):
-        if boxIndex in keys:
-            for key in boxes[boxIndex]:
-                if key not in keys:
-                    keys.append(key)
-                    keys += boxes[key]
-        else:
-            return False
-    return True
+    unlocked = [False] * len(boxes)  # Track unlocked status for each box
+    unlocked[0] = True  # The first box is always unlocked
+    keys = set(boxes[0])  # Start with keys from the first box
+
+    while True:
+        changes = False  # Track if any new box was unlocked in this iteration
+        newKeys = []
+        for key in keys:
+            if key < len(boxes) and not unlocked[key]:
+                unlocked[key] = True  # Unlock the box with the current key
+                newKeys += boxes[key]  # Add new keys found in this box
+                changes = True
+        keys.update(newKeys)
+        if not changes:  # If no new boxes were unlocked, stop the loop
+            break
+
+    return all(unlocked)  # Return True if all boxes are unlocked, else False
