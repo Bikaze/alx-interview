@@ -8,6 +8,8 @@ Below is a list of interview preparation problems currently available in this re
 
 - **Pascal's Triangle**: A solution and explanation for generating Pascal's triangle, which is a common interview question focusing on algorithmic thinking and understanding of data structures.
 
+- **Lockboxes**: A solution to the lockboxes problem, which tests the ability to work with data structures and algorithms to determine if all boxes can be unlocked given a set of keys.
+
 _Future additions will be listed here as they become available._
 
 ## Contributing
