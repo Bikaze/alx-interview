@@ -10,6 +10,8 @@ Below is a list of interview preparation problems currently available in this re
 
 - **Lockboxes**: A solution to the lockboxes problem, which tests the ability to work with data structures and algorithms to determine if all boxes can be unlocked given a set of keys.
 
+- **MinOperations**: A solution for the MinOperations problem, focusing on finding the minimum number of operations needed to achieve a certain number of characters in a file, showcasing optimization and dynamic programming skills.
+
 _Future additions will be listed here as they become available._
 
 ## Contributing
