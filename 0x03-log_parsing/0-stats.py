@@ -1,4 +1,13 @@
 #!/usr/bin/python3
+
+"""
+This script reads log data from standard input and calculates statistics on the log entries.
+
+The script counts the occurrences of different HTTP status codes and calculates the total file size.
+
+Usage: ./0-generator.py | ./0-stats.py
+"""
+
 import sys
 
 status_codes = ["200", "301", "400", "401", "403", "404", "405", "500"]
