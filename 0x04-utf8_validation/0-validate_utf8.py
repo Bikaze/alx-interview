@@ -6,9 +6,6 @@ represents a valid UTF-8 encoding for one byte characters"""
 def validUTF8(data):
     """Determines if a given data set represents a valid UTF-8 encoding."""
 
-    def is_valid_byte(byte):
-        return 0 <= byte <= 255
-
     n = len(data)
     i = 0
 
@@ -38,7 +35,7 @@ def validUTF8(data):
             return False
 
         for j in range(1, num_bytes):
-            if (data[i + j] >> 6) != 0b10:
+            if i + j >= n or (data[i + j] >> 6) != 0b10:
                 return False
 
         i += num_bytes
