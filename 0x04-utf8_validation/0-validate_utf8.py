@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """"This module contains a function that determines if a given data set
-represents a valid UTF-8 encoding for one byte characters"""
+represents a valid UTF-8 encoding using the last byte of the characters"""
 
 
 def validUTF8(data):
