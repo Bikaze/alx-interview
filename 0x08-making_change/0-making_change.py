@@ -1,8 +1,9 @@
 #!/usr/bin/python3
 """
 This module contains a function `makeChange` that determines the fewest number
-of coins needed to make up a given total amount using a dynamic programming
-approach. If the amount cannot be met by any combination of the available coins
+of coins needed to make up a given total amount using a combination of greedy
+and dynamic programming approaches.
+If the amount cannot be met by any combination of the available coins,
 the function returns -1.
 """
 
@@ -24,16 +25,18 @@ def makeChange(coins, total):
     if total <= 0:
         return 0
 
-    # Initialize a list to store the minimum number of coins needed for each
-    # amount. Use a large value (total + 1) to represent infinity.
-    dp = [total + 1] * (total + 1)
-    dp[0] = 0  # No coins are needed to make the amount 0
+    coins.sort(reverse=True)  # Sort coins in descending order
 
-    # Build dp array by iterating over each coin and each amount up to total
+    count = 0
+    remaining = total
+
     for coin in coins:
-        for x in range(coin, total + 1):
-            dp[x] = min(dp[x], dp[x - coin] + 1)
+        if coin <= remaining:
+            count += remaining // coin  # Use as many of this coin as possible
+            remaining %= coin  # Get the remaining amount
 
-    # If dp[total] is still greater than total, it means the total cannot be
-    # made up by any combination of the coins.
-    return dp[total] if dp[total] <= total else -1
+    # Check if the exact total was reached
+    if remaining == 0:
+        return count
+    else:
+        return -1
