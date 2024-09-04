@@ -3,24 +3,47 @@
 
 
 def isWinner(x, nums):
-    """Function to compute all primes up to a given number
-    using Sieve of Eratosthenes"""
+    """Determine who wins the most rounds in the Prime Game.
+
+    Args:
+        x (int): Number of rounds.
+        nums (list of int): List of `n` values for each round.
+
+    Returns:
+        str: 'Maria' if Maria wins more rounds, 'Ben' if Ben wins more rounds,
+              or None if they win an equal number of rounds or no rounds.
+    """
 
     def compute_primes_up_to(max_n):
-        """Function to compute all primes up to a given number"""
+        """Compute all primes up to a given number using the Sieve of
+        Eratosthenes.
+
+        Args:
+            max_n (int): The maximum number to compute primes up to.
+
+        Returns:
+            list of int: List of prime numbers up to `max_n`.
+        """
+        if max_n < 2:
+            return []
+
         is_prime = [True] * (max_n + 1)
         is_prime[0] = is_prime[1] = False  # 0 and 1 are not primes
         p = 2
-        while (p * p <= max_n):
-            if (is_prime[p] is True):
+        while p * p <= max_n:
+            if is_prime[p]:
                 for i in range(p * p, max_n + 1, p):
                     is_prime[i] = False
             p += 1
+
         primes = [p for p in range(max_n + 1) if is_prime[p]]
         return primes
 
+    if not nums:
+        return None
+
     # Determine the maximum value of n in the input
-    max_n = max(nums) if nums else 0
+    max_n = max(nums)
 
     # Compute all primes up to the maximum value of n
     primes = compute_primes_up_to(max_n)
